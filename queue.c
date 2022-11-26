@@ -1,12 +1,12 @@
 #include<stdio.h>
-#define n 5
+#include<stdlib.h>
 int main()
 {
-    int queue[n],ch=1,front=0,rear=0,i,j=1,x=n;
-    printf("Queue using Array");
-    printf("\n1.Insertion \n2.Deletion \n3.Display \n4.Exit");
-    while(ch)
+    int queue[100],front=0,rear=0,i,j=1,x=100,num,ch;
+    printf("\n1.Insertion \n2.Deletion \n3.Display \n4.Exit\n");
+    while(1)
     {
+        
         printf("\nEnter the Choice:");
         scanf("%d",&ch);
         switch(ch)
@@ -16,8 +16,14 @@ int main()
                 printf("\n Queue is Full");
             else
             {
-                printf("\n Enter no %d:",j++);
-                scanf("%d",&queue[rear++]);
+                printf("enter the number elements to be entered \n");
+                scanf("%d",&num);
+                for(i=0;i<num;i++)
+                {
+                    printf(" Enter no %d:\n",j++);
+                    scanf("%d",&queue[rear++]);
+                }
+                
             }
             break;
         case 2:
@@ -39,15 +45,16 @@ int main()
             {
                 for(i=front; i<rear; i++)
                 {
-                    printf("%d",queue[i]);
-                    printf("\n");
+                    printf("\t%d",queue[i]);
+                    
                 }
                 break;
+            }
             case 4:
                 exit(0);
             default:
                 printf("Wrong Choice: please see the options");
-            }
+            
         }
     }
     return 0;
