@@ -2,7 +2,8 @@
 
 #include<stdlib.h>
 
-int a[10], pos, elem;
+int pos, elem;
+int *a;
 
 int n = 0;
 
@@ -17,61 +18,61 @@ void del();
 void main()
 
 {
+       a= (int *)malloc(100*sizeof(int));
+       int choice;
 
-            int choice;
+       while(1)
 
-            while(1)
+       {
 
-            {
+       printf("\n\n~~~~MENU~~~~");
 
-             printf("\n\n~~~~MENU~~~~");
+       printf("\n=>1. Create an array of N integers");
 
-            printf("\n=>1. Create an array of N integers");
+       printf("\n=>2. Display of array elements");
 
-            printf("\n=>2. Display of array elements");
+       printf("\n=>3. Insert ELEM at a given POS");
 
-            printf("\n=>3. Insert ELEM at a given POS");
+       printf("\n=>4. Delete an element at a given POS");
 
-           printf("\n=>4. Delete an element at a given POS");
+       printf("\n=>5. Exit");
 
-           printf("\n=>5. Exit");
+       printf("\nEnter your choice: ");
 
-           printf("\nEnter your choice: ");
+       scanf("%d", &choice);
 
-           scanf("%d", &choice);
+       switch(choice)
 
-           switch(choice)
+       {
 
-           {
-
-             case 1: create();
-
-                  break;
-
-            case 2: display();
+              case 1: create();
 
                   break;
 
-           case 3: insert();
+              case 2: display();
 
                   break;
 
-           case 4:del();
+              case 3: insert();
 
                   break;
 
-           case 5:exit(1);
+              case 4:del();
 
                   break;
 
-        default:printf("\nPlease enter a valid choice:");
+              case 5:exit(1);
 
-                        }
+                  break;
 
-            }
+              default:printf("\nPlease enter a valid choice:");
 
+                        
+
+       }
+
+       }
 }
-
 void create()
 
 {
