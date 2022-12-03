@@ -1,8 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
+int *queue;
 int main()
 {
-    int queue[100],front=0,rear=0,i,j=1,x=100,num,ch;
+    int front=0,rear=0,i,j=1,x=100,num,ch;
+    queue= (int *)malloc(100*sizeof(int));
     printf("\n1.Insertion \n2.Deletion \n3.Display \n4.Exit\n");
     while(1)
     {
