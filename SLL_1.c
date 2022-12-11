@@ -3,12 +3,9 @@
      
 void create();
 void display();
-//void insert_begin();
 void insert();
-//void insert_pos();
 void delete();
-//void delete_end();
-//void delete_pos();
+
  
  
 struct node
