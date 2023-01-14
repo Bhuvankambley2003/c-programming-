@@ -8,7 +8,7 @@ void delete_begin();
 void delete_end();
 struct node
 {
-    char id[20];
+    int id;
     char name[20];
     char branch[20];
     char spl[20];
@@ -27,12 +27,10 @@ int main()
                 
                 printf("\n 1.Insert at the beginning:\n");
                 printf("\n 2.Insert at the end:\n");
-                
-                printf("\n 4.Display:\n");
-                printf("\n 5.Delete from beginning:\n");
-                printf("\n 6.Delete from the end:\n");
-              
-                printf("\n 8.Exit\n");
+                printf("\n 3.Display:\n");
+                printf("\n 4.Delete from beginning:\n");
+                printf("\n 5.Delete from the end:\n");
+                printf("\n 6.Exit\n");
                 printf("Enter your choice:\n");
                 scanf("%d",&choice);
                 switch(choice)
@@ -47,20 +45,20 @@ int main()
                         // case 3:
                         //         insert_pos();
                         //         break;
-                        case 4:
+                        case 3:
                                 display();
                                 break;
-                        case 5:
+                        case 4:
                                 delete_begin();
                                 break;
-                        case 6:
+                        case 5:
                                 delete_end();
                                 break;
                         // case 7:
                         //         delete_pos();
                         //         break;
                         
-                        case 8:
+                        case 6:
                                 exit(0);
                                 break;
                              
@@ -71,11 +69,6 @@ int main()
         }
         return 0;
 }
-
- 
-
-
-
 void display()
 {
     struct node *ptr;
@@ -97,7 +90,6 @@ void display()
             printf("ID: %d\n",ptr->id);
             printf("Branch: %s\n",ptr->branch);
             printf("Specialization: %s\n",ptr->spl);
-
             ptr=ptr->next;
         }
     }
@@ -116,14 +108,12 @@ void insert_begin()
     printf("Enter the Professor's Name:\n");
     scanf("%s",temp->name);
     printf("Enter the Professor's ID:\n");
-    scanf("%d",temp->id);
+    scanf("%d",&temp->id);
     printf("Enter the Professor's Branch:\n");
     scanf("%s",temp->branch);
     printf("Enter the Professor's Specialization:\n");
     scanf("%s",temp->spl);
-
     temp->next = NULL;
-
     if(start==NULL)
     {
         start=temp;
@@ -153,7 +143,7 @@ void insert_end()
     printf("Enter the Professor's Name:\n");
     scanf("%s",temp->name);
     printf("Enter the Professor's ID:\n");
-    scanf("%d",temp->id);
+    scanf("%d",&temp->id);
     printf("Enter the Professor's Branch:\n");
     scanf("%s",temp->branch);
     printf("Enter the Professor's Specialization:\n");
@@ -196,31 +186,32 @@ void delete_begin()
     }   
 }
 
+
 void delete_end()
 {
-    struct node *ptr;
-    if(start==NULL)
-    {
-        printf("List Empty!\n");
-        return;
-    }
-
-    else if(start->next=NULL)
-    {
-        ptr=start;
-        printf("Professor %s Data deleted.\n",ptr->name);
-        free(ptr);
-    }
-    else
-    {
-        ptr=start;
-        while (ptr->next!=NULL)
+        struct node *temp,*ptr;
+        if(start==NULL)
         {
-            ptr->next=ptr;
+                printf("\nList is Empty:");
+                exit(0);
         }
-        ptr->prev->next=NULL;
-        printf("Professor %s Data deleted.\n",ptr->name);
-        free(ptr);
-    }
-
+        else if(start->next ==NULL)
+        {
+                ptr=start;
+                start=NULL;
+                printf("\nThe deleted element is:%s\t",ptr->name);
+                free(ptr);
+        }
+        else
+        {
+                ptr=start;
+                while(ptr->next!=NULL)
+                {
+                        temp=ptr;
+                        ptr=ptr->next;
+                }
+                temp->next=NULL;
+                printf("\nThe deleted element is:%s\t",ptr->name);
+                free(ptr);
+        }
 }
