@@ -23,7 +23,7 @@ void traverse()
 	temp = start;
 	while (temp != NULL) {
 		printf("Data = %d\n", temp->info);
-		temp = temp->next;
+		temp=temp->next;
 	}
 }
 
@@ -41,8 +41,8 @@ void insertAtFront()
 
 	// Pointer of temp will be
 	// assigned to start
-	temp->next = start;
-	start = temp;
+	temp->next=start;
+	start=temp;
 }
 
 // Function to insert at the end of
@@ -58,7 +58,7 @@ void insertAtEnd()
 	scanf("%d", &data);
 	temp->info = data;
 	temp->next = NULL;
-	trav = start;
+	trav=start;
 
 	// If start is NULL
 	if (start == NULL) {
@@ -68,10 +68,10 @@ void insertAtEnd()
 
 	// Changes Links
 	else {
-		while (trav->next != NULL)
+		while (trav->next!= NULL)
 			trav = trav->next;
-		temp->prev = trav;
-		trav->next = temp;
+		temp->prev=trav;
+		trav->next=temp;
 	}
 }
 
@@ -113,15 +113,16 @@ void insertAtPosition()
 	printf("\nEnter number to be inserted: ");
 	scanf("%d", &data);
 	newnode->info = data;
-	temp = start;
+	temp=start;
 		while (i < pos - 1) {
 			temp = temp->next;
 			i++;
 		}
-		newnode->next = temp->next;
-		newnode->prev = temp;
+		newnode->next=temp->next;
+		newnode->prev=temp;
+		temp->next->prev=newnode;
 		temp->next = newnode;
-		temp->next->prev = newnode;
+		
 	}
 }
 
@@ -189,11 +190,11 @@ void deletePosition()
 
 		// Traverse till position
 		while (i < pos - 1) {
-			temp = temp->next;
+			temp=temp->next;
 			i++;
 		}
 		// Change Links
-		position = temp->next;
+		position=temp->next;
 		if (position->next != NULL)
 			position->next->prev = temp;
 		temp->next = position->next;
